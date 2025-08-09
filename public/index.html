@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TradeScope AI — AHR Digital Services</title>
+  <meta name="description" content="TradeScope AI by AHR Digital Services: turn messy client briefs into clean scopes, materials, time estimates and tiered pricing in seconds.">
+  <meta name="theme-color" content="#0f172a">
+  <style>
+    :root{
+      --bg:#0b1020; --card:#0f1a3a; --text:#e8edff; --muted:#9fb2ff; --border:rgba(255,255,255,.12);
+      --accent:#7c9bff; --accent2:#5eead4;
+    }
+    [data-theme="light"]{
+      --bg:#f6f8ff; --card:#ffffff; --text:#0b1020; --muted:#4252a8; --border:rgba(3,6,23,.12);
+      --accent:#4f6bff; --accent2:#14b8a6;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif}
+    .wrap{max-width:980px;margin:0 auto;padding:clamp(16px,3vw,28px)}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#0b1020;font-weight:900}
+    .muted{color:var(--muted);font-size:12px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid var(--border);border-radius:16px;padding:16px}
+    .row{display:grid;grid-template-columns:1fr auto;gap:12px;margin-top:12px}
+    textarea{width:100%;min-height:130px;background:transparent;border:1px solid var(--border);color:var(--text);padding:12px;border-radius:12px;resize:vertical}
+    .btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0b1020;font-weight:700;border:none;padding:10px 14px;border-radius:12px;cursor:pointer}
+    .btn.icon{display:inline-flex;align-items:center;gap:8px}
+    .ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+    .toolbar{display:flex;gap:8px;flex-direction:column}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    @media (max-width:900px){ .grid{grid-template-columns:1fr} .row{grid-template-columns:1fr} .toolbar{flex-direction:row;flex-wrap:wrap} }
+    h3{margin:0 0 8px}
+    .section{position:relative}
+    .copy{position:absolute;top:10px;right:10px}
+    .status{min-height:18px}
+    footer{opacity:.8;text-align:center;margin-top:18px;font-size:12px}
+    svg{width:16px;height:16px;display:inline-block;vertical-align:middle}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">TS</div>
+        <div>
+          <div style="font-weight:800;letter-spacing:.3px">TradeScope AI</div>
+          <div class="muted">by AHR Digital Services • <a href="mailto:18hammondreid@gmail.com" style="color:inherit">contact</a></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <a href="https://instagram.com/ahr__06" class="muted" target="_blank">@ahr__06</a>
+        <button id="theme" class="btn ghost icon" title="Toggle theme">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1Zm0 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm10-5h-2a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2ZM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1Zm13.657-6.343a1 1 0 0 1 0 1.414l-1.414 1.414a1 1 0 1 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 0ZM7.172 16.828a1 1 0 1 1-1.414 1.414L4.343 16.83a1 1 0 1 1 1.414-1.415l1.414 1.414Zm10.485 1.414a1 1 0 1 1-1.414-1.414l1.414-1.414a1 1 0 1 1 1.414 1.414l-1.414 1.414ZM7.172 4.757a1 1 0 1 1-1.414-1.414L7.172 1.93a1 1 0 1 1 1.414 1.414L7.172 4.757Z"/></svg>
+          Theme
+        </button>
+      </div>
+    </header>
+
+    <div class="card">
+      <div class="muted">Paste a client brief → get scope, materials, time, pricing, and a ready message. <b>Cmd/Ctrl + Enter</b> to send.</div>
+      <div class="row">
+        <textarea id="input" placeholder="e.g. 3-bed house in Croydon. Replace living room pendant with 6 downlights, add 2 double sockets, fit an outdoor PIR floodlight. CU modern with spare ways. Access OK."></textarea>
+        <div class="toolbar">
+          <button id="send" class="btn icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="m3.4 20.4 18-8.4-18-8.4 2.7 7.4 9.3 1-9.3 1z"/></svg>
+            Send
+          </button>
+          <button class="btn ghost icon" id="useExample">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8v-2H3v2Zm0 4h8v-2H3v2Zm10.586-8L9 13.586 7.586 12.17 6.17 13.586 9 16.414l6-6L13.586 9Z"/></svg>
+            Use example
+          </button>
+          <button class="btn ghost icon" id="clear">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3zm2 4h14v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V10zm4 3v7h2v-7H9zm4 0v7h2v-7h-2z"/></svg>
+            Clear
+          </button>
+        </div>
+      </div>
+      <div class="status muted" id="status"></div>
+    </div>
+
+    <div class="grid">
+      <div class="card section">
+        <h3>Scope of Work</h3>
+        <button class="btn ghost icon copy" data-target="scope">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Z"/></svg>
+          Copy
+        </button>
+        <pre id="scope" class="muted" style="white-space:pre-wrap"></pre>
+      </div>
+      <div class="card section">
+        <h3>Materials List</h3>
+        <button class="btn ghost icon copy" data-target="materials">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Z"/></svg>
+          Copy
+        </button>
+        <pre id="materials" class="muted" style="white-space:pre-wrap"></pre>
+      </div>
+      <div class="card section">
+        <h3>Time Estimate</h3>
+        <button class="btn ghost icon copy" data-target="time">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 8v5l4 2 .8-1.6-3.3-1.7V8H12Zm0-6a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg>
+          Copy
+        </button>
+        <pre id="time" class="muted" style="white-space:pre-wrap"></pre>
+      </div>
+      <div class="card section">
+        <h3>Pricing (3 tiers)</h3>
+        <button class="btn ghost icon copy" data-target="pricing">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v4H3zm0 7h12v4H3zm0 7h6v4H3z"/></svg>
+          Copy
+        </button>
+        <pre id="pricing" class="muted" style="white-space:pre-wrap"></pre>
+      </div>
+      <div class="card section" style="grid-column:1/-1">
+        <h3>Client-Facing Message</h3>
+        <button class="btn ghost icon copy" data-target="clientMsg">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Z"/></svg>
+          Copy
+        </button>
+        <pre id="clientMsg" class="muted" style="white-space:pre-wrap"></pre>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <button id="copyAll" class="btn icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Z"/></svg>
+          Copy All
+        </button>
+        <button id="exportTxt" class="btn ghost icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 20h14v-2H5v2Zm7-18-5.5 9h4v6h3v-6h4L12 2Z"/></svg>
+          Export .txt
+        </button>
+        <span id="saveStatus" class="muted"></span>
+      </div>
+    </div>
+
+    <footer>© <span id="year"></span> AHR Digital Services — Coulsdon, UK</footer>
+  </div>
+
+  <script>
+    const $ = (s)=>document.querySelector(s);
+    const $$ = (s)=>document.querySelectorAll(s);
+    const el = {
+      scope: $('#scope'),
+      materials: $('#materials'),
+      time: $('#time'),
+      pricing: $('#pricing'),
+      clientMsg: $('#clientMsg'),
+      status: $('#status'),
+      input: $('#input'),
+      send: $('#send'),
+      ex: $('#useExample'),
+      clear: $('#clear'),
+      copyAll: $('#copyAll'),
+      exportTxt: $('#exportTxt'),
+      theme: $('#theme'),
+      year: $('#year'),
+      saveStatus: $('#saveStatus')
+    };
+    el.year.textContent = new Date().getFullYear();
+
+    // Theme toggle with memory
+    function applyTheme(mode){ document.body.setAttribute('data-theme', mode); localStorage.setItem('ts-theme', mode); }
+    const saved = localStorage.getItem('ts-theme'); applyTheme(saved || 'dark');
+    el.theme.addEventListener('click', ()=>{ const now = document.body.getAttribute('data-theme')==='dark'?'light':'dark'; applyTheme(now); });
+
+    function setLoading(on){ el.send.disabled = on; el.status.textContent = on ? 'Working…' : ''; }
+    function fill(data){
+      el.scope.textContent = (data.scope || '').trim();
+      el.materials.textContent = (data.materials || '').trim();
+      el.time.textContent = (data.timeEstimate || '').trim();
+      if (data.pricing) {
+        const p = data.pricing;
+        el.pricing.textContent = [ p.basic ? ('Basic: ' + p.basic) : '', p.standard ? ('\n\nStandard: ' + p.standard) : '', p.premium ? ('\n\nPremium: ' + p.premium) : '' ].join('');
+      } else { el.pricing.textContent = ''; }
+      el.clientMsg.textContent = (data.clientMessage || '').trim();
+    }
+    async function send(){
+      const q = el.input.value.trim(); if(!q) return; setLoading(true);
+      try{
+        const res = await fetch('/api/chat', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({message: q}) });
+        if(!res.ok){ throw new Error('Request failed'); }
+        const data = await res.json();
+        if (data.json) fill(data.json); else if (data.reply) fill({ scope: data.reply }); else el.status.textContent = 'No response';
+      }catch(err){ el.status.textContent = 'Error: ' + err.message; } finally{ setLoading(false); }
+    }
+    el.send.addEventListener('click', send);
+    el.input.addEventListener('keydown', e=>{ if(e.key==='Enter' && (e.metaKey || e.ctrlKey)) send(); });
+    el.ex.addEventListener('click', ()=>{ el.input.value = '3-bed house in Croydon. Replace living room pendant with 6 downlights, add 2 double sockets, and fit an outdoor PIR floodlight. Consumer unit modern with spare ways. Access OK.'; });
+    el.clear.addEventListener('click', ()=>{ el.input.value=''; fill({}); el.status.textContent=''; });
+
+    // Copy buttons
+    $$('.copy').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        const id = btn.getAttribute('data-target');
+        const text = el[id].textContent;
+        if(!text) return;
+        await navigator.clipboard.writeText(text);
+        const original = btn.innerHTML;
+        btn.innerHTML = '✔ Copied';
+        setTimeout(()=>btn.innerHTML = original, 900);
+      });
+    });
+    el.copyAll.addEventListener('click', async ()=>{
+      const parts = [
+        'SCOPE OF WORK\n' + (el.scope.textContent||''),
+        '\n\nMATERIALS\n' + (el.materials.textContent||''),
+        '\n\nTIME ESTIMATE\n' + (el.time.textContent||''),
+        '\n\nPRICING\n' + (el.pricing.textContent||''),
+        '\n\nCLIENT MESSAGE\n' + (el.clientMsg.textContent||'')
+      ];
+      await navigator.clipboard.writeText(parts.join(''));
+      el.saveStatus.textContent = 'All copied';
+      setTimeout(()=>el.saveStatus.textContent='', 1200);
+    });
+
+    // Export as .txt
+    el.exportTxt.addEventListener('click', ()=>{
+      const blob = new Blob([
+        'SCOPE OF WORK\n' + (el.scope.textContent||''),
+        '\n\nMATERIALS\n' + (el.materials.textContent||''),
+        '\n\nTIME ESTIMATE\n' + (el.time.textContent||''),
+        '\n\nPRICING\n' + (el.pricing.textContent||''),
+        '\n\nCLIENT MESSAGE\n' + (el.clientMsg.textContent||'')
+      ].join(''), {type:'text/plain'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'TradeScope-quote.txt';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+  </script>
+</body>
+</html>
