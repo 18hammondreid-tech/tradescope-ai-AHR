@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AHR Ad Creative</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,500;0,600;0,700;0,800;1,700&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #06091A;
+  --navy2:   #0B0F2A;
+  --yellow:  #F5B800;
+  --blue:    #7DD3FC;
+  --white:   #FFFFFF;
+}
+
+html, body { background: #000; }
+
+/* ============================================================
+   STORY A — "YOUR WEBSITE IS LYING TO YOU"
+   Hook story. Provokes. Reveals the full system. CTA.
+   ============================================================ */
+.story {
+  width: 1080px;
+  height: 1920px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Barlow', sans-serif;
+}
+
+/* ---- STORY A ---- */
+.story-a {
+  background:
+    radial-gradient(ellipse 120% 60% at 50% 0%,   rgba(245,184,0,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 80%  50% at 100% 100%, rgba(125,211,252,0.10) 0%, transparent 55%),
+    linear-gradient(175deg, #07091E 0%, #06091A 60%, #050718 100%);
+}
+
+/* noise grain overlay */
+.story-a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg,   transparent, transparent 119px, rgba(255,255,255,0.025) 120px),
+    repeating-linear-gradient(90deg,  transparent, transparent 119px, rgba(255,255,255,0.025) 120px);
+  z-index: 1;
+}
+
+/* big diagonal yellow slash */
+.slash {
+  position: absolute;
+  width: 160%;
+  height: 14px;
+  background: var(--yellow);
+  top: 42%;
+  left: -30%;
+  transform: rotate(-8deg);
+  box-shadow: 0 0 100px 6px rgba(245,184,0,0.45);
+  z-index: 2;
+}
+
+/* ---- TOP BADGE ---- */
+.badge {
+  position: absolute;
+  top: 110px;
+  left: 80px;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  border: 3px solid rgba(245,184,0,0.55);
+  background: rgba(245,184,0,0.10);
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  color: var(--yellow);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.badge-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--yellow);
+  box-shadow: 0 0 14px var(--yellow);
+  flex-shrink: 0;
+}
+
+/* ---- HOOK HEADLINE ---- */
+.hook {
+  position: absolute;
+  top: 240px;
+  left: 80px;
+  right: 80px;
+  z-index: 10;
+}
+
+.hook-line-1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 148px;
+  line-height: 0.88;
+  color: var(--white);
+  letter-spacing: 2px;
+  display: block;
+}
+
+.hook-line-2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 148px;
+  line-height: 0.88;
+  color: var(--yellow);
+  letter-spacing: 2px;
+  display: block;
+}
+
+.hook-line-3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 100px;
+  line-height: 0.92;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 2px;
+  display: block;
+  margin-top: 12px;
+}
+
+/* ---- THE SYSTEM CARD ---- */
+.system-card {
+  position: absolute;
+  top: 860px;
+  left: 60px;
+  right: 60px;
+  background: rgba(255,255,255,0.05);
+  border: 2px solid rgba(255,255,255,0.12);
+  border-radius: 28px;
+  padding: 52px 52px 44px;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.system-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--blue);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.system-items {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sys-item {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 28px;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.09);
+  border-radius: 14px;
+}
+
+.sys-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--yellow);
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+
+.sys-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sys-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  color: var(--white);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.sys-sub {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1;
+}
+
+/* hot item (featured) */
+.sys-item.hot {
+  background: rgba(245,184,0,0.12);
+  border-color: rgba(245,184,0,0.45);
+}
+
+.sys-item.hot .sys-title { color: var(--yellow); }
+
+/* ---- GUARANTEE STRIP ---- */
+.guarantee {
+  position: absolute;
+  top: 1640px;
+  left: 60px;
+  right: 60px;
+  background: var(--yellow);
+  border-radius: 16px;
+  padding: 26px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.guarantee-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.guarantee-sub {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: rgba(6,9,26,0.7);
+  margin-top: 4px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.guarantee-cta {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  color: var(--navy);
+  letter-spacing: 2px;
+  text-align: right;
+  line-height: 0.9;
+}
+
+.guarantee-cta span {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 3px;
+  opacity: 0.65;
+}
+
+/* ---- FOOTER HANDLE ---- */
+.handle {
+  position: absolute;
+  bottom: 60px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 6px;
+  z-index: 10;
+}
+
+
+/* ============================================================
+   STORY B — "THE FULL SYSTEM" breakdown — yellow bg
+   ============================================================ */
+.story-b {
+  background: var(--yellow);
+}
+
+.story-b::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg,   transparent, transparent 119px, rgba(6,9,26,0.05) 120px),
+    repeating-linear-gradient(90deg,  transparent, transparent 119px, rgba(6,9,26,0.05) 120px);
+  z-index: 1;
+}
+
+.story-b .bg-bolt {
+  position: absolute;
+  right: -180px;
+  top: -80px;
+  opacity: 0.07;
+  z-index: 2;
+}
+
+.story-b .top-tag {
+  position: absolute;
+  top: 110px;
+  left: 80px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  color: rgba(6,9,26,0.6);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.story-b .b-headline {
+  position: absolute;
+  top: 190px;
+  left: 80px;
+  right: 80px;
+  z-index: 10;
+}
+
+.b-hl-1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 160px;
+  line-height: 0.87;
+  color: var(--navy);
+  letter-spacing: 2px;
+  display: block;
+}
+
+.b-hl-2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 110px;
+  line-height: 0.87;
+  color: var(--navy);
+  letter-spacing: 2px;
+  display: block;
+  opacity: 0.45;
+}
+
+.story-b .b-sub {
+  position: absolute;
+  top: 620px;
+  left: 80px;
+  right: 80px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--navy);
+  line-height: 1.3;
+  z-index: 10;
+}
+
+/* full-width service rows */
+.story-b .b-services {
+  position: absolute;
+  top: 800px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  z-index: 10;
+}
+
+.b-svc {
+  display: flex;
+  align-items: center;
+  padding: 32px 80px;
+  border-top: 2px solid rgba(6,9,26,0.12);
+  gap: 32px;
+}
+
+.b-svc:last-child {
+  border-bottom: 2px solid rgba(6,9,26,0.12);
+}
+
+.b-svc-icon {
+  font-size: 44px;
+  width: 56px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.b-svc-body { flex: 1; }
+
+.b-svc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 34px;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.b-svc-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 22px;
+  color: rgba(6,9,26,0.6);
+  font-weight: 500;
+  margin-top: 4px;
+  line-height: 1.2;
+}
+
+.b-svc-arrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  color: var(--navy);
+  opacity: 0.25;
+}
+
+.story-b .b-cta {
+  position: absolute;
+  bottom: 140px;
+  left: 80px;
+  right: 80px;
+  background: var(--navy);
+  border-radius: 20px;
+  padding: 44px 50px;
+  text-align: center;
+  z-index: 10;
+}
+
+.b-cta-top {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--yellow);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.b-cta-main {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  color: white;
+  letter-spacing: 2px;
+  line-height: 0.9;
+}
+
+.b-cta-main .yl { color: var(--yellow); }
+
+.b-cta-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 24px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.story-b .b-handle {
+  position: absolute;
+  bottom: 60px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: rgba(6,9,26,0.4);
+  letter-spacing: 6px;
+  z-index: 10;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ========== STORY A — HOOK ========== -->
+<div class="story story-a" id="story-a">
+
+  <div class="slash"></div>
+
+  <div class="badge">
+    <span class="badge-dot"></span>
+    AHR AUTOMATIONS
+  </div>
+
+  <div class="hook">
+    <span class="hook-line-1">YOUR SITE</span>
+    <span class="hook-line-2">ISN'T ENOUGH.</span>
+    <span class="hook-line-3">here's what actually gets you customers</span>
+  </div>
+
+  <div class="system-card">
+    <div class="system-label">// THE FULL SYSTEM</div>
+    <div class="system-items">
+
+      <div class="sys-item hot">
+        <div class="sys-num">01</div>
+        <div class="sys-text">
+          <div class="sys-title">Website that converts</div>
+          <div class="sys-sub">Not just looks — built to book jobs</div>
+        </div>
+      </div>
+
+      <div class="sys-item">
+        <div class="sys-num">02</div>
+        <div class="sys-text">
+          <div class="sys-title">Google Business Profile</div>
+          <div class="sys-sub">Optimised so people actually find you</div>
+        </div>
+      </div>
+
+      <div class="sys-item">
+        <div class="sys-num">03</div>
+        <div class="sys-text">
+          <div class="sys-title">SEO that works</div>
+          <div class="sys-sub">Show up when it matters — on Google</div>
+        </div>
+      </div>
+
+      <div class="sys-item">
+        <div class="sys-num">04</div>
+        <div class="sys-text">
+          <div class="sys-title">Paid ads that print</div>
+          <div class="sys-sub">Social & search — I run them for you</div>
+        </div>
+      </div>
+
+      <div class="sys-item">
+        <div class="sys-num">05</div>
+        <div class="sys-text">
+          <div class="sys-title">Social media presence</div>
+          <div class="sys-sub">Content that builds trust & sells</div>
+        </div>
+      </div>
+
+      <div class="sys-item">
+        <div class="sys-num">06</div>
+        <div class="sys-text">
+          <div class="sys-title">Business materials</div>
+          <div class="sys-sub">Cards, flyers — the stuff that closes</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="guarantee">
+    <div>
+      <div class="guarantee-text">I GUARANTEE<br>RESULTS.</div>
+      <div class="guarantee-sub">Or we don't stop until you do.</div>
+    </div>
+    <div class="guarantee-cta">
+      DM<br>"GROW"
+      <span>@AHRAUTOMATIONS</span>
+    </div>
+  </div>
+
+  <div class="handle">AHRAUTMATIONS.COM</div>
+
+</div>
+
+
+<!-- ========== STORY B — THE FULL SYSTEM ========== -->
+<div class="story story-b" id="story-b">
+
+  <svg class="bg-bolt" width="900" height="1200" viewBox="0 0 36 46" fill="none">
+    <path d="M28 2L6 24H20L14 44L34 22H20L28 2Z" fill="#06091A"/>
+  </svg>
+
+  <div class="top-tag">AHR AUTOMATIONS · THE SYSTEM</div>
+
+  <div class="b-headline">
+    <span class="b-hl-1">MORE THAN</span>
+    <span class="b-hl-1">A WEBSITE.</span>
+    <span class="b-hl-2">everything you need.</span>
+  </div>
+
+  <div class="b-sub">
+    Most agencies build you a site and disappear.<br>
+    I build you the whole machine.
+  </div>
+
+  <div class="b-services">
+
+    <div class="b-svc">
+      <div class="b-svc-icon">⚡</div>
+      <div class="b-svc-body">
+        <div class="b-svc-title">Conversion Website</div>
+        <div class="b-svc-desc">Built in 5–7 days. You own it. No monthly fees.</div>
+      </div>
+      <div class="b-svc-arrow">→</div>
+    </div>
+
+    <div class="b-svc">
+      <div class="b-svc-icon">📍</div>
+      <div class="b-svc-body">
+        <div class="b-svc-title">Google Business Profile</div>
+        <div class="b-svc-desc">Fully optimised — show up in local search.</div>
+      </div>
+      <div class="b-svc-arrow">→</div>
+    </div>
+
+    <div class="b-svc">
+      <div class="b-svc-icon">🔍</div>
+      <div class="b-svc-body">
+        <div class="b-svc-title">SEO</div>
+        <div class="b-svc-desc">Your site ranks. Customers find you first.</div>
+      </div>
+      <div class="b-svc-arrow">→</div>
+    </div>
+
+    <div class="b-svc">
+      <div class="b-svc-icon">🎯</div>
+      <div class="b-svc-body">
+        <div class="b-svc-title">Paid Ads</div>
+        <div class="b-svc-desc">Meta & Google ads managed for you.</div>
+      </div>
+      <div class="b-svc-arrow">→</div>
+    </div>
+
+    <div class="b-svc">
+      <div class="b-svc-icon">📱</div>
+      <div class="b-svc-body">
+        <div class="b-svc-title">Social Media</div>
+        <div class="b-svc-desc">Strategy, content & growth — handled.</div>
+      </div>
+      <div class="b-svc-arrow">→</div>
+    </div>
+
+    <div class="b-svc">
+      <div class="b-svc-icon">💳</div>
+      <div class="b-svc-body">
+        <div class="b-svc-title">Business Materials</div>
+        <div class="b-svc-desc">Cards & flyers — old school still works.</div>
+      </div>
+      <div class="b-svc-arrow">→</div>
+    </div>
+
+  </div>
+
+  <div class="b-cta">
+    <div class="b-cta-top">DM "SYSTEM" — FREE CONSULT</div>
+    <div class="b-cta-main">LET'S <span class="yl">COOK.</span></div>
+    <div class="b-cta-sub">I guarantee results. No pressure, no fluff.</div>
+  </div>
+
+  <div class="b-handle">@AHRAUTOMATIONS</div>
+
+</div>
+
+</body>
+</html>

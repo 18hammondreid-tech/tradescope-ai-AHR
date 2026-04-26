@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AHR Instagram Stories — Render</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #06091A;
+  --navy-mid: #0E1230;
+  --yellow: #F5B800;
+  --cool-blue: #7DD3FC;
+  --white: #FFFFFF;
+}
+
+html, body { margin: 0; padding: 0; background: #000; }
+
+.story {
+  width: 1080px;
+  height: 1920px;
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+  font-family: 'Barlow', sans-serif;
+}
+
+/* ==========================================================
+STORY 1 — "CLIENT SITE REBUILT"
+========================================================== */
+.story-1 {
+  background:
+    radial-gradient(ellipse at top right, rgba(245,184,0,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom left, rgba(125,211,252,0.1) 0%, transparent 55%),
+    var(--navy);
+}
+
+.story-1::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 119px, rgba(255,255,255,0.03) 119px, rgba(255,255,255,0.03) 120px),
+    repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.03) 119px, rgba(255,255,255,0.03) 120px);
+  z-index: 1;
+}
+
+.story-1 .diag-accent {
+  position: absolute;
+  width: 150%;
+  height: 10px;
+  background: var(--yellow);
+  top: 48%;
+  left: -25%;
+  transform: rotate(-12deg);
+  box-shadow: 0 0 80px rgba(245,184,0,0.5);
+  z-index: 2;
+}
+
+.story-1 .bolt-deco {
+  position: absolute;
+  right: -100px;
+  top: 180px;
+  z-index: 2;
+  opacity: 0.07;
+  transform: rotate(15deg);
+}
+
+.story-1 .eyebrow {
+  position: absolute;
+  top: 280px;
+  left: 80px;
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  background: rgba(245,184,0,0.12);
+  border: 4px solid rgba(245,184,0,0.5);
+  padding: 18px 36px;
+  border-radius: 80px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 34px;
+  color: var(--yellow);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.story-1 .eyebrow-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--yellow);
+  box-shadow: 0 0 18px var(--yellow);
+}
+
+.story-1 .headline {
+  position: absolute;
+  top: 420px;
+  left: 80px;
+  width: 920px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 130px;
+  line-height: 0.95;
+  color: white;
+  letter-spacing: 1px;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.story-1 .headline .yl { color: var(--yellow); }
+
+.story-1 .subline {
+  position: absolute;
+  top: 920px;
+  left: 80px;
+  right: 80px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 40px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.35;
+  font-weight: 500;
+  z-index: 10;
+}
+
+.story-1 .site-preview {
+  position: absolute;
+  bottom: 380px;
+  left: 80px;
+  right: 80px;
+  height: 440px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+  border: 3px solid rgba(255,255,255,0.18);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 60px rgba(245,184,0,0.2);
+  z-index: 10;
+}
+
+.site-preview .preview-browser-bar {
+  height: 56px;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 12px;
+}
+
+.preview-browser-bar .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+}
+
+.preview-browser-bar .url {
+  margin-left: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  color: rgba(255,255,255,0.55);
+}
+
+.site-preview .preview-hero { padding: 36px 44px; }
+
+.preview-hero .preview-badge {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--yellow);
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+}
+
+.preview-hero .preview-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 68px;
+  line-height: 0.9;
+  color: white;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+
+.preview-hero .preview-headline .pw { color: var(--yellow); }
+.preview-hero .preview-headline .cl { color: var(--cool-blue); }
+
+.preview-hero .preview-ctas {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.preview-cta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  padding: 12px 24px;
+  border-radius: 6px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.preview-cta.primary { background: var(--yellow); color: var(--navy); }
+
+.preview-cta.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+.story-1 .brand-footer {
+  position: absolute;
+  bottom: 280px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 34px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+/* ==========================================================
+STORY 2 — "60-SECOND QUOTE ENGINE"
+========================================================== */
+.story-2 { background: var(--navy); }
+
+.story-2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center top, rgba(245,184,0,0.18) 0%, transparent 55%);
+  z-index: 1;
+}
+
+.story-2::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 119px, rgba(255,255,255,0.02) 119px, rgba(255,255,255,0.02) 120px),
+    repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.02) 119px, rgba(255,255,255,0.02) 120px);
+  z-index: 1;
+}
+
+.story-2 .quote-tag {
+  position: absolute;
+  top: 280px;
+  left: 80px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--cool-blue);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.story-2 .headline {
+  position: absolute;
+  top: 380px;
+  left: 80px;
+  width: 920px;
+  font-family: 'Bebas Neue', sans-serif;
+  line-height: 0.92;
+  color: white;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
+.story-2 .headline-line {
+  font-size: 150px;
+  white-space: nowrap;
+}
+
+.story-2 .headline .yl { color: var(--yellow); }
+
+.story-2 .subline {
+  position: absolute;
+  top: 780px;
+  left: 80px;
+  right: 80px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 38px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.35;
+  font-weight: 500;
+  z-index: 10;
+}
+
+.story-2 .feature-card {
+  position: absolute;
+  top: 1050px;
+  left: 80px;
+  right: 80px;
+  padding: 50px 48px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border: 3px solid rgba(255,255,255,0.14);
+  border-radius: 24px;
+  z-index: 10;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+
+.feature-card .fc-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  color: white;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.feature-card .fc-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 26px;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 32px;
+}
+
+.feature-card .fc-steps {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.fc-step { flex: 1; height: 8px; border-radius: 4px; }
+
+.fc-step.current {
+  background: var(--yellow);
+  box-shadow: 0 0 20px rgba(245,184,0,0.5);
+}
+
+.fc-step.todo { background: rgba(255,255,255,0.15); }
+
+.feature-card .fc-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.feature-card .fc-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.fc-option {
+  padding: 20px 24px;
+  background: rgba(255,255,255,0.04);
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: white;
+}
+
+.fc-option.selected {
+  background: rgba(245,184,0,0.15);
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+.story-2 .bottom-tag {
+  position: absolute;
+  bottom: 280px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 38px;
+  color: white;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.story-2 .bottom-tag .yl { color: var(--yellow); }
+
+/* ==========================================================
+STORY 3 — "NEED ONE LIKE THIS?"
+========================================================== */
+.story-3 { background: var(--yellow); }
+
+.story-3::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 119px, rgba(6,9,26,0.06) 119px, rgba(6,9,26,0.06) 120px),
+    repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(6,9,26,0.06) 119px, rgba(6,9,26,0.06) 120px);
+  z-index: 1;
+}
+
+.story-3 .bolt-mega {
+  position: absolute;
+  right: -120px;
+  bottom: -100px;
+  z-index: 2;
+  opacity: 0.1;
+}
+
+.story-3 .eyebrow {
+  position: absolute;
+  top: 280px;
+  left: 80px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 34px;
+  color: rgba(6,9,26,0.75);
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.story-3 .headline {
+  position: absolute;
+  top: 380px;
+  left: 80px;
+  width: 920px;
+  font-family: 'Bebas Neue', sans-serif;
+  line-height: 0.92;
+  color: var(--navy);
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
+.story-3 .headline-line {
+  font-size: 170px;
+  white-space: nowrap;
+}
+
+.story-3 .subline {
+  position: absolute;
+  top: 800px;
+  left: 80px;
+  right: 80px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.35;
+  z-index: 10;
+}
+
+.story-3 .services {
+  position: absolute;
+  top: 980px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 10;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 28px;
+  background: var(--navy);
+  color: white;
+  border-radius: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.service-item .check {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.service-item .check::after {
+  content: '';
+  width: 12px;
+  height: 6px;
+  border-left: 4px solid var(--navy);
+  border-bottom: 4px solid var(--navy);
+  transform: rotate(-45deg) translate(3px, -2px);
+}
+
+.story-3 .cta-box {
+  position: absolute;
+  bottom: 380px;
+  left: 80px;
+  right: 80px;
+  background: var(--navy);
+  color: white;
+  padding: 44px 50px;
+  border-radius: 20px;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+}
+
+.cta-box .cta-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--yellow);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.cta-box .cta-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 76px;
+  color: white;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cta-box .cta-headline .yl { color: var(--yellow); }
+
+.cta-box .cta-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 26px;
+  color: rgba(255,255,255,0.78);
+  font-weight: 500;
+}
+
+.story-3 .handle {
+  position: absolute;
+  bottom: 290px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 36px;
+  color: var(--navy);
+  letter-spacing: 6px;
+  z-index: 10;
+}
+</style>
+</head>
+<body>
+
+<!-- ========== STORY 1 — REBUILT ========== -->
+<div class="story story-1" id="story1">
+  <div class="diag-accent"></div>
+  <svg class="bolt-deco" width="700" height="980" viewBox="0 0 36 46" fill="none">
+    <path d="M28 2L6 24H20L14 44L34 22H20L28 2Z" fill="#F5B800"/>
+  </svg>
+
+  <div class="eyebrow">
+    <span class="eyebrow-dot"></span>
+    CLIENT SITE — REBUILT
+  </div>
+
+  <div class="headline">
+    REDESIGNED.<br>
+    RELAUNCHED.<br>
+    <span class="yl">CONVERTING.</span>
+  </div>
+
+  <div class="subline">Full website rebuild for a Surrey electrician. Live now, built to book more jobs.</div>
+
+  <div class="site-preview">
+    <div class="preview-browser-bar">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="url">krlelectricalandaircon.com</div>
+    </div>
+    <div class="preview-hero">
+      <div class="preview-badge">⚡ SURREY'S TRUSTED SPECIALISTS</div>
+      <div class="preview-headline">
+        STAY <span class="pw">POWERED.</span><br>
+        STAY <span class="cl">COOL.</span>
+      </div>
+      <div class="preview-ctas">
+        <div class="preview-cta primary">📞 CALL NOW</div>
+        <div class="preview-cta secondary">FREE QUOTE</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="brand-footer">@AHRAUTOMATIONS</div>
+</div>
+
+<!-- ========== STORY 2 — FEATURE ========== -->
+<div class="story story-2" id="story2">
+  <div class="quote-tag">// THE MONEY MAKER</div>
+
+  <div class="headline">
+    <div class="headline-line">60-SECOND</div>
+    <div class="headline-line yl">QUOTE ENGINE</div>
+  </div>
+
+  <div class="subline">Built-in lead capture. Every visitor turns into a real enquiry — straight to WhatsApp.</div>
+
+  <div class="feature-card">
+    <div class="fc-title">GET A QUOTE</div>
+    <div class="fc-sub">Step 1 of 4 · What do you need?</div>
+    <div class="fc-steps">
+      <div class="fc-step current"></div>
+      <div class="fc-step todo"></div>
+      <div class="fc-step todo"></div>
+      <div class="fc-step todo"></div>
+    </div>
+    <div class="fc-label">Choose your service</div>
+    <div class="fc-options">
+      <div class="fc-option selected">⚡ EICR Testing</div>
+      <div class="fc-option">🔌 Consumer Unit</div>
+      <div class="fc-option">🏠 Full Rewire</div>
+      <div class="fc-option">❄️ Air Con</div>
+    </div>
+  </div>
+
+  <div class="bottom-tag">
+    CAPTURE. CONVERT. <span class="yl">BOOK.</span>
+  </div>
+</div>
+
+<!-- ========== STORY 3 — CTA ========== -->
+<div class="story story-3" id="story3">
+  <svg class="bolt-mega" width="1000" height="1280" viewBox="0 0 36 46" fill="none">
+    <path d="M28 2L6 24H20L14 44L34 22H20L28 2Z" fill="#06091A"/>
+  </svg>
+
+  <div class="eyebrow">YOUR BUSINESS · NEXT</div>
+
+  <div class="headline">
+    <div class="headline-line">NEED ONE</div>
+    <div class="headline-line">LIKE THIS?</div>
+  </div>
+
+  <div class="subline">We build conversion-focused sites for UK trades &amp; small businesses.</div>
+
+  <div class="services">
+    <div class="service-item">
+      <div class="check"></div>
+      Built in 5–7 days
+    </div>
+    <div class="service-item">
+      <div class="check"></div>
+      You own it — no monthly fees
+    </div>
+    <div class="service-item">
+      <div class="check"></div>
+      Designed to book jobs
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <div class="cta-label">DM "WEBSITE"</div>
+    <div class="cta-headline">
+      LET'S <span class="yl">COOK.</span>
+    </div>
+    <div class="cta-sub">Free 15-min consult, no pressure.</div>
+  </div>
+
+  <div class="handle">@AHRAUTOMATIONS</div>
+</div>
+
+</body>
+</html>
