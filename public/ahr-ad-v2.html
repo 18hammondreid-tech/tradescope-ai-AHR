@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AHR Ad Creative v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #080B14;
+  --black2:  #0D1120;
+  --blue:    #38BDF8;
+  --blue2:   #0EA5E9;
+  --orange:  #F97316;
+  --white:   #FFFFFF;
+  --dim:     rgba(255,255,255,0.5);
+}
+
+html, body { background: #000; }
+
+.story {
+  width: 1080px;
+  height: 1920px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Barlow', sans-serif;
+}
+
+/* ================================================================
+   STORY 1 — HOOK
+   "YOUR WEBSITE ISN'T GETTING YOU CUSTOMERS."
+   ================================================================ */
+.s1 {
+  background:
+    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(56,189,248,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 10% 100%,  rgba(249,115,22,0.10) 0%, transparent 55%),
+    linear-gradient(180deg, #080B14 0%, #060910 100%);
+}
+
+/* grid lines */
+.s1::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg,  transparent, transparent 119px, rgba(255,255,255,0.022) 120px),
+    repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.022) 120px);
+  z-index: 1;
+}
+
+/* top glow bar */
+.s1 .glow-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent 0%, var(--blue) 40%, var(--blue2) 60%, transparent 100%);
+  box-shadow: 0 0 60px 4px rgba(56,189,248,0.6);
+  z-index: 10;
+}
+
+/* AHR badge */
+.s1 .badge {
+  position: absolute;
+  top: 100px;
+  left: 80px;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  border: 2px solid rgba(56,189,248,0.4);
+  background: rgba(56,189,248,0.08);
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  color: var(--blue);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.badge-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 12px var(--blue);
+}
+
+/* HOOK HEADLINE */
+.s1 .hook {
+  position: absolute;
+  top: 220px;
+  left: 80px;
+  right: 80px;
+  z-index: 10;
+}
+
+.s1 .h1 {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 152px;
+  line-height: 0.87;
+  color: var(--white);
+  letter-spacing: 2px;
+}
+
+.s1 .h2 {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 152px;
+  line-height: 0.87;
+  color: var(--white);
+  letter-spacing: 2px;
+}
+
+.s1 .h3 {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 152px;
+  line-height: 0.87;
+  color: var(--blue);
+  letter-spacing: 2px;
+  text-shadow: 0 0 80px rgba(56,189,248,0.5);
+}
+
+.s1 .h-small {
+  display: block;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 38px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 18px;
+  letter-spacing: 1px;
+}
+
+/* divider line */
+.s1 .divider {
+  position: absolute;
+  top: 860px;
+  left: 80px;
+  right: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), transparent);
+  z-index: 10;
+  opacity: 0.4;
+}
+
+/* TRUTH block */
+.s1 .truth {
+  position: absolute;
+  top: 890px;
+  left: 80px;
+  right: 80px;
+  z-index: 10;
+}
+
+.s1 .truth-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--orange);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.s1 .truth-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.truth-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 32px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+}
+
+.truth-row.active {
+  border-color: rgba(56,189,248,0.35);
+  background: rgba(56,189,248,0.07);
+}
+
+.truth-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  color: var(--blue);
+  opacity: 0.7;
+  min-width: 50px;
+}
+
+.truth-row.active .truth-num { opacity: 1; }
+
+.truth-body {}
+
+.truth-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.truth-row.active .truth-title { color: var(--blue); }
+
+.truth-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 22px;
+  color: rgba(255,255,255,0.42);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* BOTTOM CTA */
+.s1 .cta-strip {
+  position: absolute;
+  bottom: 100px;
+  left: 80px;
+  right: 80px;
+  background: var(--blue);
+  border-radius: 18px;
+  padding: 40px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  box-shadow: 0 0 80px rgba(56,189,248,0.35);
+}
+
+.cta-left-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: rgba(8,11,20,0.65);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.cta-left-main {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  color: var(--black);
+  letter-spacing: 2px;
+  line-height: 0.9;
+}
+
+.cta-right {
+  text-align: right;
+}
+
+.cta-right-handle {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  color: var(--black);
+  letter-spacing: 3px;
+}
+
+.cta-right-site {
+  font-family: 'Barlow', sans-serif;
+  font-size: 20px;
+  color: rgba(8,11,20,0.55);
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+
+/* ================================================================
+   STORY 2 — THE FULL SYSTEM
+   ================================================================ */
+.s2 {
+  background:
+    radial-gradient(ellipse 100% 40% at 50% 105%, rgba(56,189,248,0.13) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 30% at 90% 0%,    rgba(249,115,22,0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #080B14 0%, #060910 100%);
+}
+
+.s2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg,  transparent, transparent 119px, rgba(255,255,255,0.02) 120px),
+    repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.02) 120px);
+  z-index: 1;
+}
+
+.s2 .glow-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--orange) 50%, transparent 100%);
+  box-shadow: 0 0 60px 4px rgba(249,115,22,0.5);
+  z-index: 10;
+}
+
+/* top tag */
+.s2 .top-tag {
+  position: absolute;
+  top: 100px;
+  left: 80px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--orange);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+/* Headline */
+.s2 .headline {
+  position: absolute;
+  top: 170px;
+  left: 80px;
+  right: 80px;
+  z-index: 10;
+}
+
+.s2-h1 {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 155px;
+  line-height: 0.87;
+  color: var(--white);
+  letter-spacing: 2px;
+}
+
+.s2-h2 {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 155px;
+  line-height: 0.87;
+  color: var(--blue);
+  letter-spacing: 2px;
+  text-shadow: 0 0 100px rgba(56,189,248,0.4);
+}
+
+/* sub */
+.s2 .sub {
+  position: absolute;
+  top: 590px;
+  left: 80px;
+  right: 80px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.35;
+  z-index: 10;
+}
+
+/* service rows */
+.s2 .services {
+  position: absolute;
+  top: 780px;
+  left: 0; right: 0;
+  z-index: 10;
+}
+
+.svc-row {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 28px 80px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.svc-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+
+.svc-row.highlight {
+  background: rgba(56,189,248,0.06);
+  border-color: rgba(56,189,248,0.18);
+}
+
+.svc-icon {
+  font-size: 44px;
+  width: 60px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.svc-body { flex: 1; }
+
+.svc-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 36px;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.svc-row.highlight .svc-name { color: var(--blue); }
+
+.svc-detail {
+  font-family: 'Barlow', sans-serif;
+  font-size: 22px;
+  color: rgba(255,255,255,0.38);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.svc-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--orange);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: rgba(249,115,22,0.12);
+  border: 1px solid rgba(249,115,22,0.3);
+  padding: 6px 16px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+/* guarantee box */
+.s2 .guarantee {
+  position: absolute;
+  bottom: 240px;
+  left: 80px;
+  right: 80px;
+  background: rgba(255,255,255,0.04);
+  border: 2px solid rgba(56,189,248,0.25);
+  border-radius: 20px;
+  padding: 40px 50px;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 0 60px rgba(56,189,248,0.08);
+}
+
+.guar-top {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--blue);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.guar-main {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 78px;
+  color: var(--white);
+  letter-spacing: 2px;
+  line-height: 0.9;
+}
+
+.guar-main .bl { color: var(--blue); }
+
+.guar-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 26px;
+  color: rgba(255,255,255,0.45);
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.s2 .s2-handle {
+  position: absolute;
+  bottom: 80px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 6px;
+  z-index: 10;
+}
+
+
+/* ================================================================
+   STORY 3 — CTA / "LET'S COOK"
+   ================================================================ */
+.s3 {
+  background:
+    radial-gradient(ellipse 120% 60% at 50% 50%, rgba(56,189,248,0.12) 0%, transparent 65%),
+    linear-gradient(180deg, #060910 0%, #080B14 100%);
+}
+
+.s3::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg,  transparent, transparent 119px, rgba(255,255,255,0.02) 120px),
+    repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.02) 120px);
+  z-index: 1;
+}
+
+/* big glow orb center */
+.s3 .orb {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56,189,248,0.12) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.s3 .glow-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--blue) 50%, transparent 100%);
+  box-shadow: 0 0 60px 4px rgba(56,189,248,0.5);
+  z-index: 10;
+}
+
+/* business badge */
+.s3 .biz-badge {
+  position: absolute;
+  top: 120px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+/* main headline */
+.s3 .s3-headline {
+  position: absolute;
+  top: 350px;
+  left: 0; right: 0;
+  text-align: center;
+  z-index: 10;
+  padding: 0 60px;
+}
+
+.s3-h1 {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 180px;
+  line-height: 0.85;
+  color: var(--white);
+  letter-spacing: 4px;
+}
+
+.s3-h2 {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 180px;
+  line-height: 0.85;
+  color: var(--blue);
+  letter-spacing: 4px;
+  text-shadow: 0 0 120px rgba(56,189,248,0.6);
+}
+
+.s3 .s3-sub {
+  position: absolute;
+  top: 870px;
+  left: 80px; right: 80px;
+  text-align: center;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 38px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.3;
+  z-index: 10;
+}
+
+/* mini proof points */
+.s3 .proofs {
+  position: absolute;
+  top: 1080px;
+  left: 80px; right: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 10;
+}
+
+.proof-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 28px;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+}
+
+.proof-check {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 20px rgba(56,189,248,0.4);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.proof-check::after {
+  content: '';
+  width: 10px; height: 6px;
+  border-left: 3px solid #080B14;
+  border-bottom: 3px solid #080B14;
+  transform: rotate(-45deg) translate(2px,-1px);
+}
+
+.proof-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* big CTA block */
+.s3 .s3-cta {
+  position: absolute;
+  bottom: 150px;
+  left: 80px; right: 80px;
+  z-index: 10;
+}
+
+.s3-cta-inner {
+  background: var(--blue);
+  border-radius: 20px;
+  padding: 50px 60px;
+  text-align: center;
+  box-shadow: 0 0 100px rgba(56,189,248,0.4), 0 30px 80px rgba(0,0,0,0.5);
+}
+
+.s3-cta-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: rgba(8,11,20,0.6);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.s3-cta-main {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 100px;
+  color: var(--black);
+  letter-spacing: 3px;
+  line-height: 0.85;
+}
+
+.s3-cta-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 26px;
+  color: rgba(8,11,20,0.55);
+  font-weight: 600;
+  margin-top: 14px;
+}
+
+.s3 .s3-handle {
+  position: absolute;
+  bottom: 70px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 6px;
+  z-index: 10;
+}
+</style>
+</head>
+<body>
+
+<!-- ======== STORY 1 — HOOK ======== -->
+<div class="story s1" id="story-1">
+  <div class="glow-bar"></div>
+
+  <div class="badge">
+    <span class="badge-dot"></span>
+    AHR AUTOMATIONS
+  </div>
+
+  <div class="hook">
+    <span class="h1">YOUR SITE</span>
+    <span class="h2">IS NOT</span>
+    <span class="h3">ENOUGH.</span>
+    <span class="h-small">here's what actually gets you customers</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="truth">
+    <div class="truth-label">// the full system</div>
+    <div class="truth-items">
+
+      <div class="truth-row active">
+        <div class="truth-num">01</div>
+        <div class="truth-body">
+          <div class="truth-title">Website that books jobs</div>
+          <div class="truth-desc">Built to convert — not just look good</div>
+        </div>
+      </div>
+
+      <div class="truth-row">
+        <div class="truth-num">02</div>
+        <div class="truth-body">
+          <div class="truth-title">Google Business Profile</div>
+          <div class="truth-desc">Optimised so people actually find you</div>
+        </div>
+      </div>
+
+      <div class="truth-row">
+        <div class="truth-num">03</div>
+        <div class="truth-body">
+          <div class="truth-title">SEO — show up on Google</div>
+          <div class="truth-desc">Traffic that comes to you, for free</div>
+        </div>
+      </div>
+
+      <div class="truth-row">
+        <div class="truth-num">04</div>
+        <div class="truth-body">
+          <div class="truth-title">Paid ads that print</div>
+          <div class="truth-desc">Meta &amp; Google — I run them for you</div>
+        </div>
+      </div>
+
+      <div class="truth-row">
+        <div class="truth-num">05</div>
+        <div class="truth-body">
+          <div class="truth-title">Social media &amp; content</div>
+          <div class="truth-desc">Strategy that builds trust and sells</div>
+        </div>
+      </div>
+
+      <div class="truth-row">
+        <div class="truth-num">06</div>
+        <div class="truth-body">
+          <div class="truth-title">Business cards &amp; materials</div>
+          <div class="truth-desc">Old school still works — let's use it</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <div>
+      <div class="cta-left-label">DM to start</div>
+      <div class="cta-left-main">LET'S<br>COOK.</div>
+    </div>
+    <div class="cta-right">
+      <div class="cta-right-handle">@AHRAUTOMATIONS</div>
+      <div class="cta-right-site">ahrautmations.com</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======== STORY 2 — THE SYSTEM ======== -->
+<div class="story s2" id="story-2">
+  <div class="glow-bar"></div>
+
+  <div class="top-tag">// AHR AUTOMATIONS</div>
+
+  <div class="headline">
+    <span class="s2-h1">MORE THAN</span>
+    <span class="s2-h2">A WEBSITE.</span>
+  </div>
+
+  <div class="sub">
+    Everyone sells you a site and disappears.<br>
+    I build you the whole machine.
+  </div>
+
+  <div class="services">
+    <div class="svc-row highlight">
+      <div class="svc-icon">⚡</div>
+      <div class="svc-body">
+        <div class="svc-name">Conversion Website</div>
+        <div class="svc-detail">Built in 5–7 days. You own it. No monthly fees.</div>
+      </div>
+      <div class="svc-tag">LIVE</div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-icon">📍</div>
+      <div class="svc-body">
+        <div class="svc-name">Google Business Profile</div>
+        <div class="svc-detail">Fully optimised — top of local search</div>
+      </div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-icon">🔍</div>
+      <div class="svc-body">
+        <div class="svc-name">SEO</div>
+        <div class="svc-detail">Your site ranks. Customers find you first.</div>
+      </div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-icon">🎯</div>
+      <div class="svc-body">
+        <div class="svc-name">Paid Ads</div>
+        <div class="svc-detail">Meta &amp; Google campaigns — managed for you</div>
+      </div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-icon">📱</div>
+      <div class="svc-body">
+        <div class="svc-name">Social Media</div>
+        <div class="svc-detail">Content strategy that builds &amp; sells</div>
+      </div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-icon">💳</div>
+      <div class="svc-body">
+        <div class="svc-name">Business Materials</div>
+        <div class="svc-detail">Cards, flyers — old school still closes deals</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="guarantee">
+    <div class="guar-top">I guarantee results</div>
+    <div class="guar-main">DM <span class="bl">"SYSTEM"</span></div>
+    <div class="guar-sub">Free 15-min call. No fluff. No pressure.</div>
+  </div>
+
+  <div class="s2-handle">@AHRAUTOMATIONS · AHRAUTMATIONS.COM</div>
+</div>
+
+
+<!-- ======== STORY 3 — CTA ======== -->
+<div class="story s3" id="story-3">
+  <div class="orb"></div>
+  <div class="glow-bar"></div>
+
+  <div class="biz-badge">AHR AUTOMATIONS · YOUR BUSINESS · NEXT</div>
+
+  <div class="s3-headline">
+    <span class="s3-h1">LET'S</span>
+    <span class="s3-h2">COOK.</span>
+  </div>
+
+  <div class="s3-sub">
+    You already know you need more customers.<br>
+    I'll build you the system that gets them.
+  </div>
+
+  <div class="proofs">
+    <div class="proof-item">
+      <div class="proof-check"></div>
+      <div class="proof-text">Website built to convert</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-check"></div>
+      <div class="proof-text">Google &amp; SEO fully sorted</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-check"></div>
+      <div class="proof-text">Ads, social &amp; content handled</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-check"></div>
+      <div class="proof-text">Results guaranteed</div>
+    </div>
+  </div>
+
+  <div class="s3-cta">
+    <div class="s3-cta-inner">
+      <div class="s3-cta-label">DM "SYSTEM" to start</div>
+      <div class="s3-cta-main">@AHRAUTOMATIONS</div>
+      <div class="s3-cta-sub">ahrautmations.com · Free consult, no pressure</div>
+    </div>
+  </div>
+
+  <div class="s3-handle">AHRAUTOMATIONS · UK TRADES &amp; SMALL BUSINESS</div>
+</div>
+
+</body>
+</html>
